@@ -38,7 +38,7 @@ const Sidebar: FC<ISidebarProps> = ({
         <div className="flex flex-shrink-0 p-4 !pb-0">
           <Button
             onClick={() => { onCurrentIdChange('-1') }}
-            className="group block w-full flex-shrink-0 !justify-start !h-9 text-primary-600 items-center text-sm"
+            className="group block w-full flex-shrink-0 !justify-start !h-9 text-primary-600 items-center text-sm hover:bg-primary-50 transition-all duration-200"
           >
             <PencilSquareIcon className="mr-2 h-4 w-4" /> {t('app.chat.newChat')}
           </Button>
@@ -56,9 +56,9 @@ const Sidebar: FC<ISidebarProps> = ({
               key={item.id}
               className={classNames(
                 isCurrent
-                  ? 'bg-primary-50 text-primary-600'
-                  : 'text-gray-700 hover:bg-gray-100 hover:text-gray-700',
-                'group flex items-center rounded-md px-2 py-2 text-sm font-medium cursor-pointer',
+                  ? 'bg-primary-50 text-primary-600 shadow-sm'
+                  : 'text-gray-700 hover:bg-gray-50 hover:text-primary-600 hover:-translate-y-[1px] hover:shadow-sm',
+                'group flex items-center rounded-md px-2 py-2 text-sm font-medium cursor-pointer transition-all duration-200',
               )}
             >
               <ItemIcon

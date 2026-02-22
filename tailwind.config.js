@@ -19,13 +19,29 @@ module.exports = {
           800: '#1F2A37',
           900: '#111928',
         },
-        primary: {
-          50: '#EBF5FF',
-          100: '#E1EFFE',
-          200: '#C3DDFD',
-          300: '#A4CAFE',
-          600: '#1C64F2',
-          700: '#1A56DB',
+        primary: { // Teal shades
+          50: '#f0fdfa',
+          100: '#ccfbf1',
+          200: '#99f6e4',
+          300: '#5eead4',
+          400: '#2dd4bf',
+          500: '#14b8a6',
+          600: '#0d9488',
+          700: '#0f766e', // Base primary
+          800: '#115e59',
+          900: '#134e4a',
+        },
+        secondary: { // Forest green shades for actions
+          100: '#dcfce7',
+          500: '#22c55e',
+          600: '#16a34a', // Base secondary
+          700: '#15803d',
+        },
+        accent: { // Bright blue for prominent interactive items
+          100: '#dbeafe',
+          500: '#3b82f6',
+          600: '#2563eb', // Base accent
+          700: '#1d4ed8',
         },
         blue: {
           500: '#E1EFFE',
@@ -34,7 +50,6 @@ module.exports = {
           50: '#F3FAF7',
           100: '#DEF7EC',
           800: '#03543F',
-
         },
         yellow: {
           100: '#FDF6B2',

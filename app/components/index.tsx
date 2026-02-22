@@ -698,6 +698,16 @@ const Main: FC<IMainProps> = () => {
           }
         </div>
       </div>
+      {/* Floating Action Button */}
+      <button
+        onClick={() => handleConversationIdChange('-1')}
+        className="fixed bottom-6 right-6 rtl:right-auto rtl:left-6 z-50 p-4 bg-primary-600 text-white rounded-full shadow-lg hover:bg-primary-700 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center group"
+        title={t('app.chat.newChatDefaultName') as string}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6 group-hover:rotate-90 transition-transform duration-300">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        </svg>
+      </button>
     </div>
   )
 }
