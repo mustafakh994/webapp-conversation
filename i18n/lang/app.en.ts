@@ -1,35 +1,35 @@
 const translation = {
   common: {
-    welcome: 'Welcome to use',
-    appUnavailable: 'App is unavailable',
-    appUnkonwError: 'App is unavailable',
+    welcome: 'مرحباً بك في',
+    appUnavailable: 'التطبيق غير متاح',
+    appUnkonwError: 'التطبيق غير متاح',
   },
   chat: {
-    newChat: 'New chat',
-    newChatDefaultName: 'New conversation',
-    openingStatementTitle: 'Opening statement',
-    powerBy: 'Powered by',
-    prompt: 'Prompt',
-    privatePromptConfigTitle: 'Conversation settings',
-    publicPromptConfigTitle: 'Initial Prompt',
-    configStatusDes: 'Before start, you can modify conversation settings',
+    newChat: 'محادثة جديدة',
+    newChatDefaultName: 'محادثة جديدة',
+    openingStatementTitle: 'الرسالة الافتتاحية',
+    powerBy: '',
+    prompt: 'تلقين',
+    privatePromptConfigTitle: 'إعدادات المحادثة',
+    publicPromptConfigTitle: 'التلقين الأولي',
+    configStatusDes: 'قبل البدء، يمكنك تعديل إعدادات المحادثة',
     configDisabled:
-      'Previous session settings have been used for this session.',
-    startChat: 'Start Chat',
+      'تم استخدام إعدادات الجلسة السابقة لهذه الجلسة.',
+    startChat: 'ابدأ المحادثة',
     privacyPolicyLeft:
-      'Please read the ',
+      'يرجى قراءة ',
     privacyPolicyMiddle:
-      'privacy policy',
+      'سياسة الخصوصية',
     privacyPolicyRight:
-      ' provided by the app developer.',
+      ' المقدمة من مطور التطبيق.',
   },
   errorMessage: {
-    valueOfVarRequired: 'Variables value can not be empty',
+    valueOfVarRequired: 'لا يمكن أن تكون قيمة المتغيرات فارغة',
     waitForResponse:
-      'Please wait for the response to the previous message to complete.',
+      'يرجى الانتظار حتى يكتمل الرد على الرسالة السابقة.',
   },
   variableTable: {
-    optional: 'Optional',
+    optional: 'اختياري',
   },
 }
 
