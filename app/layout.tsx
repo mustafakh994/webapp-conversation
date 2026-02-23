@@ -24,7 +24,7 @@ const LocaleLayout = async ({
     <html lang={locale ?? 'ar'} dir={dir} className={`h-full ${almarai.variable}`}>
       <body className={`h-full ${almarai.className}`}>
         <div className="overflow-x-auto">
-          <div className="w-screen h-screen min-w-[300px]">
+          <div className="w-full h-full min-w-[300px]">
             {children}
           </div>
         </div>
