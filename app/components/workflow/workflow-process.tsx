@@ -24,6 +24,7 @@ const WorkflowProcessItem = ({
   expand = false,
   hideInfo = false,
 }: WorkflowProcessProps) => {
+  return null;
   const [collapse, setCollapse] = useState(!expand)
   const running = data.status === WorkflowRunningStatus.Running
   const succeeded = data.status === WorkflowRunningStatus.Succeeded

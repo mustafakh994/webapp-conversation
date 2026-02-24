@@ -100,7 +100,10 @@ const Main: FC<IMainProps> = () => {
 
   const conversationName = currConversationInfo?.name || t('app.chat.newChatDefaultName') as string
   const conversationIntroduction = currConversationInfo?.introduction || ''
-  const suggestedQuestions = currConversationInfo?.suggested_questions || []
+  const suggestedQuestions = [
+    ...(currConversationInfo?.suggested_questions || []),
+    'كيفية الحصول على رخصة قيادة - محدث 33'
+  ]
 
   const handleConversationSwitch = () => {
     if (!inited) { return }
