@@ -220,7 +220,7 @@ const Main: FC<IMainProps> = () => {
       isOpeningStatement: isShowPrompt,
       suggestedQuestions,
     }
-    if (calculatedIntroduction) { return [openStatement] }
+    if (calculatedIntroduction || suggestedQuestions.length > 0) { return [openStatement] }
 
     return []
   }
