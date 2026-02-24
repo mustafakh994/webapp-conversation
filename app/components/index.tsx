@@ -148,6 +148,8 @@ const Main: FC<IMainProps> = () => {
           })
         })
         setChatList(newChatList)
+      }).catch(e => {
+        console.error("Failed to fetch chat list:", e)
       })
     }
 
