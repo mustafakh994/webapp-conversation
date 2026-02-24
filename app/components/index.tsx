@@ -457,16 +457,31 @@ const Main: FC<IMainProps> = () => {
         })
       },
       async onCompleted(hasError?: boolean) {
-        if (hasError) { return }
+        if (hasError) {
+          setRespondingFalse()
+          return
+        }
 
         if (getConversationIdChangeBecauseOfNew()) {
-          const { data: allConversations }: any = await fetchConversations()
-          const newItem: any = await generationConversationName(allConversations[0].id)
+          try {
+            const { data: allConversations }: any = await fetchConversations()
+            const targetId = tempNewConversationId || allConversations?.[0]?.id
+            if (targetId) {
+              const newItem: any = await generationConversationName(targetId)
 
-          const newAllConversations = produce(allConversations, (draft: any) => {
-            draft[0].name = newItem.name
-          })
-          setConversationList(newAllConversations as any)
+              const newAllConversations = produce(allConversations, (draft: any) => {
+                const index = draft.findIndex((item: any) => item.id === targetId)
+                if (index !== -1) {
+                  draft[index].name = newItem?.name || draft[index].name
+                } else if (draft[0]) {
+                  draft[0].name = newItem?.name || draft[0].name
+                }
+              })
+              setConversationList(newAllConversations as any)
+            }
+          } catch (e) {
+            console.error("Failed to generate conversation name:", e)
+          }
         }
         setConversationIdChangeBecauseOfNew(false)
         resetNewConversationInputs()
