@@ -282,25 +282,24 @@ const baseFetch = (url: string, fetchOptions: any, { needAllResponseContent }: I
           const resClone = res.clone()
           // Error handler
           if (!/^(2|3)\d{2}$/.test(res.status)) {
-            try {
-              const bodyJson = res.json()
-              switch (res.status) {
-                case 401: {
+            resClone.text().then((text: string) => {
+              try {
+                const bodyJson = JSON.parse(text)
+                if (res.status === 401) {
                   Toast.notify({ type: 'error', message: 'Invalid token' })
-                  return
+                } else {
+                  Toast.notify({ type: 'error', message: bodyJson.message || 'Server Error' })
                 }
-                default:
-                  // eslint-disable-next-line no-new
-                  new Promise(() => {
-                    bodyJson.then((data: any) => {
-                      Toast.notify({ type: 'error', message: data.message })
-                    })
-                  })
+              } catch (e) {
+                if (res.status === 401) {
+                  Toast.notify({ type: 'error', message: 'Invalid token' })
+                } else {
+                  Toast.notify({ type: 'error', message: `Server Error (${res.status}): ${text || 'Unknown Error'}` })
+                }
               }
-            }
-            catch (e) {
-              Toast.notify({ type: 'error', message: `${e}` })
-            }
+            }).catch(() => {
+              Toast.notify({ type: 'error', message: 'Server Error' })
+            })
 
             return Promise.reject(resClone)
           }
@@ -312,12 +311,21 @@ const baseFetch = (url: string, fetchOptions: any, { needAllResponseContent }: I
           }
 
           // return data
-          const data = options.headers.get('Content-type') === ContentType.download ? res.blob() : res.json()
-
-          resolve(needAllResponseContent ? resClone : data)
+          if (options.headers.get('Content-type') === ContentType.download) {
+            resolve(res.blob())
+          } else {
+            resClone.text().then((text: string) => {
+              try {
+                const data = text ? JSON.parse(text) : {}
+                resolve(needAllResponseContent ? resClone : data)
+              } catch (e) {
+                reject(new Error('Invalid JSON response'))
+              }
+            })
+          }
         })
         .catch((err) => {
-          Toast.notify({ type: 'error', message: err })
+          Toast.notify({ type: 'error', message: err?.message || err })
           reject(err)
         })
     }),
