@@ -391,11 +391,15 @@ export const ssePost = (
   globalThis.fetch(urlWithPrefix, options)
     .then((res: any) => {
       if (!/^(2|3)\d{2}$/.test(res.status)) {
-        // eslint-disable-next-line no-new
-        new Promise(() => {
-          res.json().then((data: any) => {
+        res.text().then((text: string) => {
+          try {
+            const data = JSON.parse(text)
             Toast.notify({ type: 'error', message: data.message || 'Server Error' })
-          })
+          } catch (e) {
+            Toast.notify({ type: 'error', message: `Server Error (${res.status}): ${text || 'Unknown Error'}` })
+          }
+        }).catch(() => {
+          Toast.notify({ type: 'error', message: 'Server Error' })
         })
         onError?.('Server Error')
         return
